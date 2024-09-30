@@ -12,7 +12,7 @@ Were user:
 
 Base concept:
 
-![Base concept]("https://github.com/antirek/vue-chat-test-task/raw/main/images/screenshot.jpg")
+![Base concept](https://github.com/antirek/vue-chat-test-task/raw/main/images/screenshot.jpg)
 
 ## Storage
 
