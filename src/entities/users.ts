@@ -1,5 +1,3 @@
-import { Counter } from './identificators'
-
 export class User {
   private _name: string
 

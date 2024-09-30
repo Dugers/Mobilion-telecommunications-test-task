@@ -11,7 +11,8 @@ export const useUsersStore = defineStore('users', () => {
     [key: UserId]: User
   } = reactive({})
 
-  function get(id: UserId): User | undefined {
+  function get(id: UserId): User {
+    checkUserExist(id)
     return container[id]
   }
 
@@ -22,7 +23,7 @@ export const useUsersStore = defineStore('users', () => {
   }
 
   function checkUserExist(id: UserId) {
-    if (!get(id)) {
+    if (!(id in container)) {
       throw new Error(`User with id ${id} doesn't exists`)
     }
   }
