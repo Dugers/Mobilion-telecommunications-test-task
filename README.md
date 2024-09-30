@@ -1,45 +1,46 @@
-# chat-test-task
+# What is here?
 
-This template should help get you started developing with Vue 3 in Vite.
+Here is a chat for two users. There isn't server part.
+Were user:
 
-## Recommended IDE Setup
+- [VueJS](https://vuejs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Pinia (State Manager)](https://pinia.vuejs.org/)
+- [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+# Approach
 
-## Type Support for `.vue` Imports in TS
+Base concept:
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+![Base concept]("https://github.com/antirek/vue-chat-test-task/raw/main/images/screenshot.jpg")
 
-## Customize configuration
+## Storage
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### Users
 
-## Project Setup
+1. Let's create a user type (based on concept only name required) (which can then simply be expanded) and create a storage for it
+2. We will identify users by ID, create a simple counter (imitation of issuing indexes in the database) 
 
-```sh
-npm install
-```
+### Messages
 
-### Compile and Hot-Reload for Development
+1. Let's create a message type (based on the concept, only text is required) (which can then simply be expanded) and create a storage for it
+2. We will identify messages by two user IDs receiver and sender
+3. We will store messages in a hash table for quick delivery (the user key with the lowest ID comes first)
 
-```sh
-npm run dev
-```
+## Components
 
-### Type-Check, Compile and Minify for Production
+- **App** — contains ChatComponents, creates users and handle errors
+- **ChatComponent** — contains three components (based on concept) and :
+  - **ChatHeader** — contains the name of the interlocutor (recipient)
+  - **ChatMessages** — contains messages
+  - **ChatUI** — ontains UI for creating new messages
 
-```sh
-npm run build
-```
+# Opportunities for expansion
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- Add theme switching (add class `.dark` and value for dark variables)
+- Add nicer font sizes
+- Add a picture to the user
+- Add reactions to messages
+- ...
+- Connect to the backend
+- ...
