@@ -1,16 +1,24 @@
-import { defineStore } from 'pinia'
-import { User, UsersContainer } from '@/entities/users'
+import { Counter } from '@/entities/identificators'
+import { User } from '@/entities/users'
 import type { UserId } from '@/entities/users'
+import { defineStore } from 'pinia'
+import { reactive } from 'vue'
 
 export const useUsersStore = defineStore('users', () => {
-  const container = new UsersContainer()
+  const counter = new Counter()
 
-  function get(id: UserId) {
-    return container.get(id)
+  const container: {
+    [key: UserId]: User
+  } = reactive({})
+
+  function get(id: UserId): User | undefined {
+    return container[id]
   }
 
   function add(user: User) {
-    return container.add(user)
+    const id: UserId = counter.count
+    container[id] = user
+    return id
   }
 
   function checkUserExist(id: UserId) {
